@@ -15,9 +15,9 @@
 --]]
 AddCSLuaFile()
 
-DEFINE_BASECLASS( "base_anim" )
+DEFINE_BASECLASS( "sent_stencil_test" )
 
-ENT.PrintName = "Stencil Test"
+ENT.PrintName = "Big Stencil Test"
 ENT.Author    = "Lexi"
 ENT.Spawnable = true
 ENT.Category  = "Dev Stuff"
@@ -26,27 +26,8 @@ if ( SERVER ) then
 
 	function ENT:Initialize()
 
-		self:SetModel( "models/hunter/plates/plate1x1.mdl" )
+		self:SetModel( "models/hunter/plates/plate2x3.mdl" )
 		self:PhysicsInit( SOLID_VPHYSICS )
-
-	end
-
-else
-
-	local cvar = CreateConVar( "stencil_tutorial_draw_ents", 0, FCVAR_NONE, "If the stencil test entities should draw normally" )
-	cvars.AddChangeCallback( cvar:GetName(), function(_, old, new)
-
-		for _, ent in pairs( ents.FindByClass( "sent_stencil_test*" ) ) do
-
-			ent:SetNoDraw( not tobool( new ) )
-
-		end
-
-	end, "sent_stencil_test" )
-
-	function ENT:Initialize()
-
-		self:SetNoDraw( not cvar:GetBool() )
 
 	end
 
