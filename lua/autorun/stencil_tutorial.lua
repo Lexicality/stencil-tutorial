@@ -22,5 +22,6 @@ end
 concommand.Add( "stencil_tutorial_end_example", function()
 
 	hook.Remove( "PostDrawOpaqueRenderables", "Stencil Tutorial Example" )
+	hook.Remove( "HUDPaint", "Stencil Tutorial Example" )
 
 end )
