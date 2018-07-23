@@ -36,6 +36,10 @@ hook.Add( "PostDrawOpaqueRenderables", "Stencil Tutorial Example", function()
 	-- Draw a rectangle at a weird angle and location into the stencil buffer
 	cam.Start3D2D(Vector( 1014,  -24,  -40 ), Angle( -30, -120, 90 ), 0.5)
 	surface.SetDrawColor( color_white )
+	-- Note that if you draw something transluncent in here (like a rounded box or text)
+	--  you will end up with a solid rectangle the size of what you just drew.
+	-- The reason for this due to how blending works, but can be summarised as "because".
+	-- For more information, see https://www.khronos.org/opengl/wiki/Blending
 	surface.DrawRect( 0, 0, 200, 200 )
 	cam.End3D2D()
 
